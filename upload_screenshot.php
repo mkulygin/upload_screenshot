@@ -25,7 +25,7 @@ if($_SERVER['REQUEST_METHOD'] == 'GET'){
             reader.onload = function(event){
                 var blob2 = event.target.result; //event.target.results contains the base64 code to create the image
                 $.ajax({
-                    url: 'http://msk1-mcdev09.synergy.local/test_upload_screenshot2.php',
+                    url: 'http://localhost/upload_screenshot.php',
                     type: "POST",
                     data: { image: {blob2} },
                     success: function(data,status) {
@@ -48,7 +48,7 @@ if($_SERVER['REQUEST_METHOD'] == 'GET'){
 }
 
 // Decode Base64 and save to file
-define('UPLOAD_DIR', '/var/www/html/mc2/mc_2.0/public/attached_files/tmp/dialogscreenshot/');
+define('UPLOAD_DIR', '/tmp/dialogscreenshot/');
 $error = '';
 ($_SERVER['REQUEST_METHOD'] != 'POST') ? $error .= "For uploading use only POST method. Used ".$_SERVER['REQUEST_METHOD'].' method.' : null ;
 (!isset($_POST['image'])) ? $error .= " POST['image'] is empty." : null ;
